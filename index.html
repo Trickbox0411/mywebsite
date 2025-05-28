@@ -3,30 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chu</title>
+    <title>Trang Chia Sẻ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        body {
-            background-image: url('https://i.pinimg.com/originals/b7/80/cf/b780cf63f2c0402fea2a76c0322c99a1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-        }
-        .content-overlay {
-            background-color: rgba(255, 255, 255, 0.9); /* Lớp phủ trắng mờ để nội dung dễ đọc */
-            border-radius: 8px;
-            padding: 16px;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="font-sans">
     <!-- Header -->
-    <header class="bg-pink-500 text-white p-4">
+    <header class="bg-pink-500 text-white p-4 animate-sparkle">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Thông Tin</h1>
+            <h1 class="text-2xl font-bold sparkle-text">Ròm Lầy VN</h1>
             <div class="flex space-x-4">
                 <a href="https://t.me/romlayvn" target="_blank" class="text-white hover:text-pink-200 transition-transform transform hover:scale-110">
                     <i class="fab fa-telegram-plane text-3xl"></i>
@@ -40,63 +28,56 @@
 
     <!-- Main Content -->
     <main class="container mx-auto my-8 px-4">
-        <section id="home" class="mb-8 content-overlay">
-            <h2 class="text-3xl font-semibold mb-4">Chào Mừng Đến Với Trang Web</h2>
+        <section id="home" class="mb-8 content-overlay animate-bounce-in">
+            <h2 class="text-3xl font-semibold mb-4">Xin Chào!</h2>
             <p class="text-lg text-gray-700">
                 Đây là nơi bạn có thể chia sẻ và khám phá những thông tin thú vị. 
                 Nội dung sẽ được cập nhật thường xuyên để mang đến trải nghiệm tốt nhất!
             </p>
         </section>
 
-        <section id="about" class="mb-8 content-overlay">
-            <h2 class="text-3xl font-semibold mb-4">Giới Thiệu</h2>
+        <section id="about" class="mb-8 content-overlay animate-bounce-in">
+            <h2 class="text-3xl font-semibold mb-4">Liên Hệ Với Tôi</h2>
             <p class="text-lg text-gray-700 mb-4">
                 Trang web này được tạo ra nhằm cung cấp thông tin hữu ích về nhiều chủ đề khác nhau. 
                 Hãy theo dõi để không bỏ lỡ những cập nhật mới!
             </p>
             <div class="flex flex-wrap gap-4">
-                <a href="https://t.me/romlayvn" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:scale-105 social-link">
+                <a href="https://t.me/romlayvn" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:pulse social-link sparkle-small">
                     <i class="fab fa-telegram-plane text-2xl"></i>
                     <span class="text-base">Telegram</span>
                 </a>
-                <a href="https://github.com/Trickbox0411" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:scale-105 social-link">
+                <a href="https://github.com/Trickbox0411" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:pulse social-link sparkle-small">
                     <i class="fab fa-github text-2xl"></i>
                     <span class="text-base">Github</span>
                 </a>
-                <a href="https://facebook.com/your_facebook" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:scale-105 social-link">
+                <a href="https://facebook.com/your_facebook" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:pulse social-link sparkle-small">
                     <i class="fab fa-facebook-f text-2xl"></i>
                     <span class="text-base">Facebook</span>
                 </a>
-                <a href="https://x.com/romlayvn" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:scale-105 social-link">
-                    <i class="fab fa-x-twitter text-2xl"></i>
-                    <span class="text-base">X</span>
-                </a>
-                <a href="https://t.me/romlayipa" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:scale-105 social-link">
-                    <i class="fab fa-telegram-plane text-2xl"></i>
-                    <span class="text-base">Kênh Telegram</span>
-                </a>
-                <a href="https://t.me/romlaychat" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:scale-105 social-link">
-                    <i class="fab fa-telegram-plane text-2xl"></i>
-                    <span class="text-base">Nhóm chat Telegram</span>
-                </a>
-                <a href="https://discord.gg/romlayvn" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:scale-105 social-link">
+                 <a href="https://discord.gg/romlayvn" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:pulse social-link sparkle-small">
                     <i class="fab fa-discord text-2xl"></i>
                     <span class="text-base">Discord</span>
                 </a>
+                <a href="https://x.com/romlayvn" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:pulse social-link sparkle-small">
+                    <i class="fab fa-x-twitter text-2xl"></i>
+                    <span class="text-base">X</span>
+                </a>
+                <a href="https://t.me/romlayipa" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:pulse social-link sparkle-small">
+                    <i class="fab fa-telegram-plane text-2xl"></i>
+                    <span class="text-base">Kênh Telegram</span>
+                </a>
+                <a href="https://t.me/romlaychat" target="_blank" class="flex items-center space-x-2 text-pink-600 hover:text-pink-800 bg-white border border-gray-300 rounded-lg px-4 py-2 transition-all transform hover:pulse social-link sparkle-small">
+                    <i class="fab fa-telegram-plane text-2xl"></i>
+                    <span class="text-base">Nhóm chat Telegram</span>
+                </a>
+               
             </div>
-        </section>
-
-        <section id="contact" class="mb-8 content-overlay">
-            <h2 class="text-2xl font-semibold mb-2">Liên Hệ</h2>
-            <p class="text-base text-gray-700">
-                Nếu bạn có câu hỏi hoặc muốn chia sẻ thông tin, hãy gửi email cho chúng tôi tại: 
-                <a href="mailto:contact@example.com" class="text-pink-600 hover:underline">contact@example.com</a>
-            </p>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-pink-500 text-white p-2">
+    <footer class="bg-pink-500 text-white p-2 animate-sparkle-slow">
         <div class="container mx-auto text-center">
             <p class="text-sm">© 2025 Trang Chia Sẻ Thông Tin. All rights reserved.</p>
         </div>
@@ -116,10 +97,10 @@
         // Click animation for social links
         document.querySelectorAll('.social-link').forEach(link => {
             link.addEventListener('click', function (e) {
-                this.classList.add('scale-95');
+                this.classList.add('rotate-6', 'glow');
                 setTimeout(() => {
-                    this.classList.remove('scale-95');
-                }, 100);
+                    this.classList.remove('rotate-6', 'glow');
+                }, 300);
             });
         });
     </script>
