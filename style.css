@@ -1,5 +1,5 @@
 body {
-    background-image: url('https://i.pinimg.com/originals/b7/80/cf/b780cf63f2c0402fea2a76c0322c99a1.jpg');
+    background-image: url('https://i.pinimg.com/originals/2d/74/b6/2d74b6de4b3d24892b93ffc38007d018.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -7,7 +7,7 @@ body {
 }
 
 .content-overlay {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 50, 0.85);
     border-radius: 8px;
     padding: 16px;
 }
@@ -38,20 +38,43 @@ body {
     animation: sparkle 2s infinite;
 }
 
-.sparkle-small {
+.star-twinkle {
     position: relative;
 }
 
-.sparkle-small::after {
+.star-twinkle::before {
     content: '';
     position: absolute;
     top: -5px;
+    left: -5px;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 20%, transparent 70%);
+    border-radius: 50%;
+    animation: twinkle 1s infinite;
+}
+
+.star-twinkle::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
     right: -5px;
     width: 6px;
     height: 6px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.7) 20%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 20%, transparent 70%);
     border-radius: 50%;
-    animation: sparkle 1.5s infinite;
+    animation: twinkle 1.2s infinite;
+}
+
+.social-link.heart-pop::after {
+    content: '♥';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffd700;
+    font-size: 16px;
+    animation: heartPop 0.5s ease-out;
 }
 
 @keyframes fadeIn {
@@ -71,22 +94,13 @@ body {
     100% { transform: scale(1); opacity: 0.8; }
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+@keyframes twinkle {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.3); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 0.9; }
 }
 
-.social-link:hover.pulse {
-    animation: pulse 0.5s ease-in-out;
-}
-
-.social-link.rotate-6 {
-    transform: rotate(6deg);
-    transition: transform 0.3s ease-in-out;
-}
-
-.social-link.glow {
-    box-shadow: 0 0 10px rgba(255, 182, 193, 0.8);
-    transition: box-shadow 0.3s ease-in-out;
+@keyframes heartPop {
+    0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    100% { transform: translateX(-50%) translateY(-20px); opacity: 0; }
 }
