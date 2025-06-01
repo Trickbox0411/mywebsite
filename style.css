@@ -97,7 +97,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-	flex: 0 0 calc(50% - 10px);
 }
 
 .tool-item i {
