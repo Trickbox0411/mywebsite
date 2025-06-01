@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('https://wallpapercave.com/wp/wp8701362.jpg');
+    background-image: url('icons/back.png');
     background-size: cover;
     background-position: center;
     color: white;
@@ -36,7 +36,7 @@ body {
 .bio {
     text-align: center;
     font-size: 1.2em;
-	color: 	#101010;
+	color: 	#00000;
 }
 
 .social-links {
