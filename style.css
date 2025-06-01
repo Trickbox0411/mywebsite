@@ -131,3 +131,11 @@ body {
     vertical-align: middle;
     margin-right: 10px;
 }
+@media (max-width: 767px) {
+    body {
+        font-size: 1.4em;
+    }
+    .jailbreak-tools .tool-list .tool-item {
+        flex: 0 0 100%;
+    }
+}
