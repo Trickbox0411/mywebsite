@@ -70,7 +70,7 @@ body {
     font-size: 1.1em;
 }
 
-.jailbreak-tools, .package-managers, .ipa-sign-tools{
+.jailbreak-tools, .package-managers, .ipa-sign-tools {
     margin-top: 20px;
 }
 
@@ -82,8 +82,12 @@ body {
 
 .tool-list {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 20px;
+}
+
+.jailbreak-tools .tool-list {
+    justify-content: space-between; /* Đảm bảo 2 mục mỗi hàng */
 }
 
 .tool-item {
@@ -93,10 +97,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-	border-inline:3px;
+	flex: 0 0 calc(50% - 10px);
 }
 
 .tool-item i {
+	display: flex;
     font-size: 1.5em;
     color: #1e90ff;
 }
