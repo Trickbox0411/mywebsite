@@ -1,194 +1,222 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ròm Lầy VN</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts for Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <section class="header">
-            <img src="icons/profile.jpg" alt="Ảnh Hồ Sơ - Ròm Lầy VN">
-            <h1>Ròm Lầy VN</h1>
-        </section>
-        <section class="bio">
-            <p>Xin chào, tôi là Ròm Lầy VN, một người đam mê phần mềm và jailbreak iOS.</p>
-        </section>
-        <section class="social-links">
-            <div class="social-box">
-                <a href="https://x.com/romlayvn"><i class="fab fa-x-twitter"></i> X</a>
+    <!-- Sakura Effect -->
+    <div class="sakura-container"></div>
+
+    <div class="layout-wrapper">
+        <!-- Header (Left Column) -->
+        <header class="header animate-sparkle">
+            <div class="header-content-wrapper">
+                <div class="header-profile">
+                    <img src="icons/avatar.png" alt="Avatar" class="avatar">
+                    <h1 class="sparkle-text">Ròm Lầy VN</h1>
+                </div>
+
+                <section id="bio" class="bio animate-bounce-in">
+                    <p>Xin chào, tôi là Ròm Lầy VN, một người đam mê phần mềm và jailbreak iOS. Trang này chia sẻ các công cụ jailbreak, trình quản lý gói, và công cụ ký IPA tốt nhất để tối ưu hóa thiết bị iOS của bạn.</p>
+                </section>
+
+                <section id="social" class="social-links animate-bounce-in">
+                    <h2>Liên Kết Xã Hội</h2>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="social-box star-twinkle">
+                            <a href="https://t.me/romlayvn" target="_blank">
+                                <i class="fab fa-telegram-plane"></i>
+                                Telegram
+                            </a>
+                        </div>
+                        <div class="social-box star-twinkle">
+                            <a href="https://t.me/romlayipa" target="_blank">
+                                <i class="fab fa-telegram-plane"></i>
+                                Kênh Telegram
+                            </a>
+                        </div>
+                        <div class="social-box star-twinkle">
+                            <a href="https://t.me/romlaychat" target="_blank">
+                                <i class="fab fa-telegram-plane"></i>
+                                Nhóm Chat Telegram
+                            </a>
+                        </div>
+                        <div class="social-box star-twinkle">
+                            <a href="ipa.html">
+                                <i class="fas fa-download"></i>
+                                Down Load IPA
+                            </a>
+                        </div>
+                    </div>
+                </section>
             </div>
-            <div class="social-box">
-                <a href="https://t.me/romlayvn"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            </div>
-            <div class="social-box">
-                <a href="https://t.me/romlayipa"><i class="fab fa-telegram"></i> Kênh Telegram</a>
-            </div>
-            <div class="social-box">
-                <a href="https://t.me/romlaychat"><i class="fas fa-users"></i> Nhóm Chat Telegram</a>
-            </div>
-        </section>
-               </section>
-        <section class="jailbreak-tools">
-            <h2>Công Cụ Jailbreak iOS</h2>
-            <div class="tool-list">
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/unc0ver.png" alt="unc0ver icon" class="tool-icon">
-                        <strong>unc0ver</strong>
+        </header>
+
+        <!-- Main Content Area (Right, Scrollable Column) -->
+        <div class="main-content-area">
+            <main class="container">
+                <section id="jailbreak-tools" class="jailbreak-tools animate-bounce-in">
+                    <h2>Công Cụ Jailbreak iOS</h2>
+                    <div class="tool-list">
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/unc0ver.png" alt="unc0ver icon" class="tool-icon">
+                                <a href="https://unc0ver.dev" target="_blank"><strong>unc0ver</strong></a>
+                            </div>
+                            <p>Công cụ jailbreak semi-untethered phổ biến, hỗ trợ iOS 11.0-14.8. Tính năng: Cydia tích hợp, hỗ trợ tweak injection, ổn định cao. Yêu cầu: Thiết bị A7-A14, macOS/Windows/Linux. Ưu điểm: Cộng đồng lớn, cập nhật thường xuyên.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/checkra1n.png" alt="checkra1n icon" class="tool-icon">
+                                <a href="https://checkra.in" target="_blank"><strong>checkra1n</strong></a>
+                            </div>
+                            <p>Jailbreak bán gắn kết dựa trên bootrom exploit checkm8, hỗ trợ thiết bị A5-A11 trên iOS 12.0-14.8.1. Tính năng: Hỗ trợ Cydia, tốc độ nhanh, root access. Yêu cầu: macOS/Linux, USB-A. Ưu điểm: Không thể vá bởi Apple.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/taurine.png" alt="Taurine icon" class="tool-icon">
+                                <a href="https://taurine.app" target="_blank"><strong>Taurine</strong></a>
+                            </div>
+                            <p>Jailbreak semi-untethered cho iOS 14.0-14.3, phát triển bởi CoolStar. Tích hợp Sileo, hỗ trợ A8-A14. Tính năng: Giao diện hiện đại, tweak injection, rootless option. Yêu cầu: macOS/Windows. Ưu điểm: Hiệu suất tối ưu, ít lỗi.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/electra.png" alt="Electra icon" class="tool-icon">
+                                <a href="https://electra.team" target="_blank"><strong>Electra</strong></a>
+                            </div>
+                            <p>Jailbreak cho iOS 11.0-11.4.1, hỗ trợ A7-A11, sử dụng Sileo. Tính năng: Hỗ trợ tweak, SSH access, giao diện mượt. Yêu cầu: macOS/Windows. Ưu điểm: Phù hợp với iOS cũ, dễ sử dụng.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/odyssey.png" alt="Odyssey icon" class="tool-icon">
+                                <a href="https://theodyssey.dev" target="_blank"><strong>Odyssey</strong></a>
+                            </div>
+                            <p>Jailbreak semi-untethered cho iOS 13.0-13.7, hỗ trợ A8-A13. Tích hợp Sileo, libhooker. Tính năng: Tweak injection, rootless, hiệu suất cao. Yêu cầu: macOS/Windows. Ưu điểm: Ổn định, giao diện đẹp.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/dopamine.png" alt="Dopamine icon" class="tool-icon">
+                                <a href="https://github.com/opa334/Dopamine" target="_blank"><strong>Dopamine</strong></a>
+                            </div>
+                            <p>Jailbreak semi-untethered cho iOS 15.0-16.6.1, hỗ trợ A12-A15/M1-M2. Tích hợp Sileo, rootless. Tính năng: Hỗ trợ tweak hiện đại, SSH, giao diện tùy chỉnh. Yêu cầu: macOS/Windows. Ưu điểm: Hỗ trợ iOS mới, tốc độ nhanh.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/palerain.png" alt="Palerain icon" class="tool-icon">
+                                <a href="https://palera.in" target="_blank"><strong>Palera1n</strong></a>
+                            </div>
+                            <p>Jailbreak checkm8 cho A8-A11 trên iOS 15.0-17.0, hỗ trợ rootless. Tính năng: Sileo, tweak injection, SSH. Yêu cầu: macOS/Linux, USB-A. Ưu điểm: Hỗ trợ iOS mới, không thể vá.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/chimera.png" alt="Chimera icon" class="tool-icon">
+                                <a href="https://chimera.coolstar.org" target="_blank"><strong>Chimera</strong></a>
+                            </div>
+                            <p>Jailbreak iOS 12.0-12.5.7, hỗ trợ A7-A12(X), sử dụng Sileo. Tính năng: Tweak injection, SSH, giao diện hiện đại. Yêu cầu: macOS/Windows. Ưu điểm: Ổn định cho iOS 12, dễ cài đặt.</p>
+                        </div>
                     </div>
-                    <p>Công cụ jailbreak phổ biến cho iOS, hỗ trợ nhiều phiên bản từ iOS 11 đến iOS 14.</p>
-                    <a href="https://unc0ver.dev">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/checkra1n.png" alt="checkra1n icon" class="tool-icon">
-                        <strong>checkra1n</strong>
+                </section>
+
+                <section id="package-managers" class="package-managers animate-bounce-in">
+                    <h2>Trình Quản Lý Gói</h2>
+                    <div class="tool-list">
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/sileo.png" alt="Sileo icon" class="tool-icon">
+                                <a href="https://getsileo.app" target="_blank"><strong>Sileo</strong></a>
+                            </div>
+                            <p>Trình quản lý gói hiện đại, thay thế Cydia. Tính năng: Giao diện thân thiện, hỗ trợ tweak, repo quản lý, tối ưu iOS 11+. Yêu cầu: Thiết bị jailbreak. Ưu điểm: Nhẹ, nhanh, cập nhật thường xuyên.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/zebra.png" alt="Zebra icon" class="tool-icon">
+                                <a href="https://getzbra.com" target="_blank"><strong>Zebra</strong></a>
+                            </div>
+                            <p>Trình quản lý gói nhẹ, nhanh, hỗ trợ tùy chỉnh tweak. Tính năng: Repo quản lý, giao diện tối giản, hỗ trợ iOS 9+. Yêu cầu: Thiết bị jailbreak. Ưu điểm: Tiết kiệm tài nguyên, dễ sử dụng.</p>
+                        </div>
                     </div>
-                    <p>Công cụ jailbreak bán gắn kết dựa trên bootrom exploit, hỗ trợ thiết bị A5-A11.</p>
-                    <a href="https://checkra.in">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/taurine.png" alt="taurine icon" class="tool-icon">
-                        <strong>Taurine</strong>
+                </section>
+
+                <section id="ipa-sign-tools" class="ipa-sign-tools animate-bounce-in">
+                    <h2>Công Cụ Sign IPA</h2>
+                    <div class="tool-list">
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/trollstore.png" alt="TrollStore icon" class="tool-icon">
+                                <a href="https://github.com/opa334/TrollStore" target="_blank"><strong>TrollStore</strong></a>
+                            </div>
+                            <p>Công cụ perma-signing IPA, không cần jailbreak. Tính năng: Cài đặt vĩnh viễn, hỗ trợ iOS 14.0-16.6.1, không cần máy tính. Yêu cầu: A12-A15. Ưu điểm: Tiện lợi, không cần làm mới.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/altstore.png" alt="AltStore icon" class="tool-icon">
+                                <a href="https://altstore.io" target="_blank"><strong>AltStore</strong></a>
+                            </div>
+                            <p>Công cụ ký IPA trên iOS, yêu cầu AltServer. Tính năng: Cài đặt IPA, làm mới tự động, hỗ trợ iOS 12+. Yêu cầu: macOS/Windows, Apple ID. Ưu điểm: Miễn phí, tích hợp tốt.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/sidestore.png" alt="SideStore icon" class="tool-icon">
+                                <a href="https://sidestore.io" target="_blank"><strong>SideStore</strong></a>
+                            </div>
+                            <p>Công cụ ký IPA trên thiết bị, không cần máy tính sau cài đặt đầu. Tính năng: Hỗ trợ iOS 14+, VPN tích hợp. Yêu cầu: Apple ID, Wi-Fi. Ưu điểm: Độc lập, tiện lợi.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/sideloadly.png" alt="Sideloadly icon" class="tool-icon">
+                                <a href="https://sideloadly.io" target="_blank"><strong>Sideloadly</strong></a>
+                            </div>
+                            <p>Công cụ ký IPA trên máy tính, hỗ trợ Wi-Fi sideloading. Tính năng: Tiêm tweak, hỗ trợ iOS 7+, Apple ID miễn phí. Yêu cầu: macOS/Windows. Ưu điểm: Linh hoạt, dễ dùng.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/gbox.png" alt="GBox icon" class="tool-icon">
+                                <a href="https://gbox.app" target="_blank"><strong>GBox</strong></a>
+                            </div>
+                            <p>Công cụ ký IPA trên thiết bị, hỗ trợ chứng chỉ tùy chỉnh. Tính năng: Cài đặt IPA, không cần PC, iOS 14+. Yêu cầu: Apple ID. Ưu điểm: Giao diện đơn giản, độc lập.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/esign.png" alt="Esign icon" class="tool-icon">
+                                <a href="https://esign.yyyue.xyz" target="_blank"><strong>Esign</strong></a>
+                            </div>
+                            <p>Công cụ ký IPA trực tiếp trên thiết bị, sử dụng chứng chỉ miễn phí. Tính năng: Hỗ trợ iOS 11+, cài đặt nhanh. Yêu cầu: Apple ID. Ưu điểm: Không cần PC, tiện lợi.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/scarlet.png" alt="Scarlet icon" class="tool-icon">
+                                <a href="https://usescarlet.com" target="_blank"><strong>Scarlet</strong></a>
+                            </div>
+                            <p>Công cụ ký IPA dựa trên AltStore/SideStore. Tính năng: Cài đặt IPA, hỗ trợ iOS 14+, giao diện đẹp. Yêu cầu: PC ban đầu, Apple ID. Ưu điểm: Tích hợp tốt, ổn định.</p>
+                        </div>
+                        <div class="tool-item star-twinkle">
+                            <div class="tool-header">
+                                <img src="icons/feather.png" alt="Feather icon" class="tool-icon">
+                                <a href="https://github.com/FeatherApp/Feather" target="_blank"><strong>Feather</strong></a>
+                            </div>
+                            <p>Công cụ ký IPA mã nguồn mở, hỗ trợ Apple Developer Program. Tính năng: Cài đặt IPA, iOS 13+, tùy chỉnh chứng chỉ. Yêu cầu: Apple ID. Ưu điểm: Minh bạch, linh hoạt.</p>
+                        </div>
                     </div>
-                    <p>Công cụ jailbreak cho iOS 14.0-14.3, phát triển bởi CoolStar.</p>
-                    <a href="https://taurine.app">Truy cập trang web</a>
+                </section>
+            </main>
+
+            <footer class="animate-sparkle-slow">
+                <div class="container">
+                    <p>© 2025 Ròm Lầy VN. All rights reserved.</p>
                 </div>
-				                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/electra.png" alt="electra icon" class="tool-icon">
-                        <strong>Electra</strong>
-                    </div>
-                    <p>Công cụ jailbreak cho iOS 11.0-11.4.1, hỗ trợ thiết bị A7-A11, sử dụng Sileo.</p>
-                    <a href="https://electra.team">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/odyssey.png" alt="odyssey icon" class="tool-icon">
-                        <strong>Odyssey</strong>
-                    </div>
-                    <p>Jailbreak semi-untethered cho iOS 13.0-13.7, hỗ trợ thiết bị A8-A13, phát triển bởi CoolStar.</p>
-                    <a href="https://theodyssey.dev">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/dopamine.png" alt="dopamine icon" class="tool-icon">
-                        <strong>Dopamine</strong>
-                    </div>
-                    <p>Jailbreak semi-untethered cho iOS 15-16, hỗ trợ các thiết bị A12+.</p>
-                    <a href="https://ellekit.space/dopamine/">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/palerain.png" alt="palerain icon" class="tool-icon">
-                        <strong>Palerain</strong>
-                    </div>
-                    <p>Jailbreak checkm8 cho thiết bị A8-A11 trên iOS 15-17, hỗ trợ rootless.</p>
-                    <a href="https://palera.in/">Truy cập trang web</a>
-                </div>
-				<div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/chimera.png" alt="chimera icon" class="tool-icon">
-                        <strong>Chimera</strong>
-                    </div>
-                    <p>Công cụ jailbreak iOS 12.0-12.4, hỗ trợ thiết bị A7-A12(X), sử dụng Sileo thay vì Cydia.</p>
-                    <a href="https://chimera.sh">Truy cập trang web</a>
-                </div>
-            </div>
-        </section>
-		<section class="package-managers">
-            <h2>Trình Quản Lý Gói</h2>
-            <div class="tool-list">
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/sileo.png" alt="sileo icon" class="tool-icon">
-                        <strong>Sileo</strong>
-                    </div>
-                    <p>Trình quản lý gói hiện đại, giao diện thân thiện, thay thế Cydia trên nhiều công cụ jailbreak.</p>
-                    <a href="https://getsileo.app">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/zebra2.svg" alt="zebra icon" class="tool-icon">
-                        <strong>Zebra</strong>
-                    </div>
-                    <p>Trình quản lý gói nhẹ, nhanh, hỗ trợ tùy chỉnh tweak trên thiết bị jailbreak.</p>
-                    <a href="https://getzbra.com">Truy cập trang web</a>
-                </div>
-            </div>
-        </section>
-		        <section class="ipa-sign-tools">
-            <h2>Công Cụ Sign IPA</h2>
-            <div class="tool-list">
-				<div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/trollstore.png" alt="trollstore icon" class="tool-icon">
-                        <strong>TrollStore</strong>
-                    </div>
-                    <p>Công cụ perma-signing cho phép cài đặt IPA mà không cần jailbreak.</p>
-                    <a href="https://github.com/opa334/TrollStore">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/altstore.png" alt="altstore icon" class="tool-icon">
-                        <strong>AltStore</strong>
-                    </div>
-                    <p>Công cụ ký và cài đặt IPA trên iOS, yêu cầu AltServer trên máy tính để làm mới ứng dụng mỗi 7 ngày.</p>
-                    <a href="https://altstore.io">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/sidestore.png" alt="sidestore icon" class="tool-icon">
-                        <strong>SideStore</strong>
-                    </div>
-                    <p>Công cụ ký IPA trực tiếp trên thiết bị, không cần máy tính sau lần cài đặt đầu tiên, sử dụng VPN.</p>
-                    <a href="https://sidestore.io">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/sideloadly.png" alt="sideloadly icon" class="tool-icon">
-                        <strong>Sideloadly</strong>
-                    </div>
-                    <p>Công cụ ký IPA trên máy tính, hỗ trợ Wi-Fi sideloading và tiêm tweak vào IPA.</p>
-                    <a href="https://sideloadly.io">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/gbox.png" alt="gbox icon" class="tool-icon">
-                        <strong>GBox</strong>
-                    </div>
-                    <p>Công cụ ký IPA trên thiết bị, hỗ trợ chứng chỉ tùy chỉnh và không cần máy tính.</p>
-                    <a href="https://gbox.run">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/esign.png" alt="esign icon" class="tool-icon">
-                        <strong>Esign</strong>
-                    </div>
-                    <p>Công cụ ký IPA trực tiếp trên thiết bị, sử dụng chứng chỉ Apple miễn phí.</p>
-                    <a href="https://ios.codevn.net/esign-ipa/">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/scarlet.png" alt="scarlet icon" class="tool-icon">
-                        <strong>Scarlet</strong>
-                    </div>
-                    <p>Công cụ ký và cài IPA dựa trên AltStore/SideStore, yêu cầu kết nối PC ban đầu.</p>
-                    <a href="https://usescarlet.com/">Truy cập trang web</a>
-                </div>
-                <div class="tool-item">
-                    <div class="tool-header">
-                        <img src="icons/feather.png" alt="feather icon" class="tool-icon">
-                        <strong>Feather</strong>
-                    </div>
-                    <p>Công cụ ký IPA mã nguồn mở, hỗ trợ chứng chỉ Apple Developer Program.</p>
-                    <a href="https://github.com/khcrysalis/Feather/releases">Truy cập trang web</a>
-                </div>
-            </div>
-        </section>
+            </footer>
+        </div>
     </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>

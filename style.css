@@ -1,141 +1,477 @@
 body {
-    font-family: Arial, sans-serif;
-    background-image: url('icons/back.png');
+    font-family: 'Poppins', sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop'); /* Thêm hình nền tối */
+    background-color: #111; /* Màu nền dự phòng */
     background-size: cover;
     background-position: center;
-    color: white;
+    background-repeat: no-repeat;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
-    font-size: 1.2em;
+    color: #ffffff;
+    font-size: 1rem;
+    position: relative;
+    /* overflow-x: hidden; đã được xử lý bởi layout-wrapper */
+}
+
+/* --- Bố cục hai cột --- */
+.layout-wrapper {
+    display: flex;
+    align-items: stretch; /* Kéo dài các cột bằng nhau */
+    min-height: 100vh;
+}
+
+.main-content-area {
+    flex: 1; /* Chiếm không gian còn lại */
+    height: 100vh;
+    overflow-y: auto; /* Cho phép cột này cuộn */
+    padding: 2rem; /* Thêm khoảng đệm */
+    backdrop-filter: blur(5px); /* Di chuyển hiệu ứng mờ vào đây */
+}
+
+/* Tùy chỉnh thanh cuộn cho đẹp hơn (cho trình duyệt WebKit) */
+.main-content-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-content-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-content-area::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+
+/* Thêm đoạn CSS này vào file CSS chính của bạn, ví dụ: style.css */
+
+/* Container cho các cánh hoa anh đào */
+.sakura-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Cho phép các cú nhấp chuột đi qua */
+    overflow: hidden; /* Ẩn các cánh hoa bên ngoài container */
+    z-index: 9999; /* Đảm bảo nó nằm trên cùng của các nội dung khác */
+}
+
+/* Kiểu dáng cho từng cánh hoa anh đào */
+.sakura {
+    position: absolute;
+    /* Các thuộc tính top, left, width, height, opacity, transform (xoay ban đầu) được đặt bởi JS */
+
+    /* Hình dáng cánh hoa mặc định - có thể thay thế bằng hình ảnh */
+    background-color: #ffffff; /* Màu hồng nhạt */
+    border-radius: 50%; /* Cánh hoa hình tròn đơn giản */
+    /* Để có hình dáng cánh hoa chân thật hơn, hãy sử dụng background-image */
+    /* background-image: url('icons/sakura.png');
+    background-size: 20px;
+    background-repeat: repeat;
+    filter: blur(1px); /* Tùy chọn: làm mờ nhẹ để tạo hiệu ứng chiều sâu */
+
+    /* Thuộc tính animation */
+    animation-name: sakura-fall;
+    animation-timing-function: ease-in-out; /* Để có chuyển động lắc lư tự nhiên hơn */
+    animation-iteration-count: 1; /* Mỗi cánh hoa rơi một lần */
+    animation-fill-mode: forwards; /* Giữ trạng thái cuối cùng (ngoài màn hình) */
+    /* animation-duration và animation-delay được đặt bởi JavaScript */
+}
+
+/* Keyframes cho animation rơi cánh hoa anh đào chân thật */
+@keyframes sakura-fall {
+    0% {
+        /* Bắt đầu từ vị trí, xoay và độ mờ ban đầu được đặt bởi JS */
+        /* Keyframe 0% này đảm bảo animation bắt đầu từ trạng thái hiện tại của phần tử */
+    }
+    25% {
+        /* Lắc lư ngang, rơi dọc và xoay */
+        transform: translate(calc(var(--sway-amplitude) * 0.5), 25vh) rotate(calc(var(--rotation-speed) * 90deg));
+        opacity: 0.4; /* Độ mờ ở 25% của quá trình rơi */
+    }
+    50% {
+        transform: translate(calc(var(--sway-amplitude) * -0.5), 50vh) rotate(calc(var(--rotation-speed) * 180deg));
+        opacity: 0.6; /* Độ mờ tối đa ở giữa quá trình rơi */
+    }
+    75% {
+        transform: translate(calc(var(--sway-amplitude) * 0.5), 75vh) rotate(calc(var(--rotation-speed) * 270deg));
+        opacity: 0.4;
+    }
+    100% {
+        /* Rơi ra khỏi màn hình, xoay và mờ dần */
+        transform: translate(0, 110vh) rotate(calc(var(--rotation-speed) * 360deg));
+        opacity: 0; /* Mờ dần khi nó rời khỏi màn hình */
+    }
 }
 
 .container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.1)
-    border-radius: 10px;
+    max-width: 960px; /* Điều chỉnh lại chiều rộng tối đa cho nội dung chính */
+    margin: 0 auto; /* Căn giữa container trong main-content-area */
+    position: relative;
+    z-index: 1;
 }
 
 .header {
+    /* --- Cập nhật cho cột bên trái --- */
+    flex: 0 0 350px; /* Chiều rộng cố định 350px */
+    height: 100vh;
+    position: sticky; /* Giữ cố định khi cuộn */
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Căn nội dung từ trên xuống */
+    padding: 2rem;
+    box-sizing: border-box;
+    border-radius: 12px; /* Thêm bo tròn góc */
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.2); /* Đường kẻ phân cách tinh tế hơn */
+    position: relative;
+    overflow: hidden;
+}
+
+.header-content-wrapper {
+    width: 100%;
     text-align: center;
 }
 
-.header img {
-    width: 150px;
-    height: 150px;
+.header-profile {
+    display: flex;
+    flex-direction: column; /* Xếp avatar và tên theo chiều dọc */
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar {
+    width: 120px; /* Tăng kích thước avatar */
+    height: 120px;
     border-radius: 50%;
-    border: 3px solid white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    object-fit: cover;
 }
 
 .header h1 {
-    font-size: 2.5em;
-	color: #FF6347;
+    font-size: 2.2rem;
+    margin: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .bio {
-    text-align: center;
-    font-size: 1.2em;
-	color: 	#00000;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.85), rgba(50, 50, 50, 0.85));
+    /* Các thuộc tính này đã có, chỉ cần điều chỉnh margin */
+    margin-top: 2rem;
+    margin-bottom: 0; /* Bỏ margin bottom */
+    padding: 1rem; /* Giảm padding một chút */
+}
+
+.bio h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
 }
 
 .social-links {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.social-links > div {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
-    margin: 20px 0;
+    gap: 1rem;
 }
 
 .social-box {
-    background-color: #333;
-    border: 2px solid #1e90ff;
-    border-radius: 10px;
-    padding: 10px 15px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(50, 50, 50, 0.7));
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .social-box:hover {
     transform: scale(1.1);
-    background-color: #555;
-    border-color: #ff4500;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
 }
 
 .social-box a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 5px;
-    font-size: 1.1em;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.social-box a i {
+    font-size: 1.4rem;
+}
+
+.social-box a:hover {
+    color: #d1d5db;
 }
 
 .jailbreak-tools, .package-managers, .ipa-sign-tools {
-    margin-top: 20px;
+    margin-top: 2rem;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.85), rgba(50, 50, 50, 0.85));
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
 .jailbreak-tools h2, .package-managers h2, .ipa-sign-tools h2 {
-   font-size: 2em;
-   color: #FF6347;
-   text-align: center;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 .tool-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.jailbreak-tools .tool-list {
-    justify-content: space-between; /* Đảm bảo 2 mục mỗi hàng */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
 }
 
 .tool-item {
-    background-color: #F5F5F5;
-    padding: 15px;
-    border-radius: 10px;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(50, 50, 50, 0.7));
+    padding: 1rem;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
+
+.tool-header {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-.tool-item i {
-	display: flex;
-    font-size: 1.5em;
-    color: #1e90ff;
-}
-
-.tool-item strong {
-    font-size: 1.3em;
-	color: #0000FF
-}
-
-.tool-item p {
-    color: #101010;
-	margin: 0;
-    font-size: 1em;
-}
-
-.tool-item a {
-    color: #1e90ff;
-    text-decoration: none;
-    font-size: 1em;
-}
-
-.tool-item a:hover {
-    text-decoration: underline;
-}
 .tool-icon {
     width: 32px;
     height: 32px;
-    vertical-align: middle;
-    margin-right: 10px;
 }
-@media (max-width: 767px) {
-    body {
-        font-size: 1.4em;
+
+.tool-item strong {
+    font-size: 1.2rem;
+}
+
+.tool-item a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.tool-item a:hover {
+    color: #d1d5db;
+    text-decoration: underline;
+}
+
+.tool-item p {
+    margin: 0.5rem 0 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+footer {
+    /* Đơn giản hóa footer */
+    background: transparent;
+    padding: 1.5rem 0 0 0; /* Chỉ cần padding top */
+    border-radius: 0;
+    backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.animate-sparkle {
+    animation: fadeIn 1s ease-in;
+}
+
+.animate-sparkle-slow {
+    animation: fadeIn 1.5s ease-in;
+}
+
+.animate-bounce-in {
+    animation: bounceIn 1s ease-out;
+}
+
+.sparkle-text::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 20%, transparent 70%);
+    border-radius: 50%;
+    animation: sparkle 2s infinite;
+}
+
+.star-twinkle {
+    position: relative;
+}
+
+.star-twinkle::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 20%, transparent 70%);
+    border-radius: 50%;
+    animation: twinkle 1s infinite;
+}
+
+.star-twinkle::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 20%, transparent 70%);
+    border-radius: 50%;
+    animation: twinkle 1.2s infinite;
+}
+
+.social-box.heart-pop::after, .tool-item.heart-pop::after {
+    content: '♥';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-size: 16px;
+    animation: heartPop 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes sparkle {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.5); opacity: 0.3; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+@keyframes twinkle {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.3); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes heartPop {
+    0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    100% { transform: translateX(-50%) translateY(-20px); opacity: 0; }
+}
+
+/* --- Responsive cho bố cục mới --- */
+@media (max-width: 1024px) {
+    .layout-wrapper {
+        flex-direction: column; /* Chuyển về một cột trên màn hình nhỏ */
     }
-    .jailbreak-tools .tool-list .tool-item {
+
+    .header {
+        flex-basis: auto;
+        height: auto;
+        position: static; /* Bỏ cố định */
+        border-radius: 12px;
+        margin: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.4); /* Trả lại viền */
+        padding: 1.5rem;
+        border-right: 1px solid rgba(255, 255, 255, 0.4); /* Giữ lại viền phải */
+    }
+
+    .main-content-area {
+        height: auto;
+        padding: 0 1rem 1rem 1rem; /* Điều chỉnh padding */
+        backdrop-filter: none; /* Tắt blur trên mobile để tăng hiệu năng */
+    }
+
+    .header-profile {
+        flex-direction: row; /* Quay lại hàng ngang cho gọn */
+        justify-content: center;
+    }
+
+    .avatar {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    .container {
+        padding: 0; /* Bỏ padding của container vì main-content-area đã có */
+    }
+
+    .header h1 { font-size: 1.8rem; }
+    .bio h2, .jailbreak-tools h2, .package-managers h2, .ipa-sign-tools h2 { font-size: 1.5rem; }
+
+    .social-box {
+        flex: 0 0 calc(50% - 0.5rem);
+    }
+
+    .tool-list { grid-template-columns: 1fr; }
+    .tool-item strong { font-size: 1.1rem; }
+    .tool-item p { font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+    .social-box {
         flex: 0 0 100%;
+    }
+
+    .header, .main-content-area {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+
+    .main-content-area {
+        padding-top: 0;
+    }
+    
+    .bio, .jailbreak-tools, .package-managers, .ipa-sign-tools, footer {
+        padding: 1rem;
     }
 }
