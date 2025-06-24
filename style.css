@@ -1,275 +1,205 @@
+/* --- Biến màu và Giao diện --- */
+:root {
+    --bg-color: #f4f7f9;
+    --text-color: #1a202c;
+    --text-color-secondary: #4a5568;
+    --primary-color: #3182ce;
+    --header-bg-color: #ffffff;
+    --card-bg-color: #ffffff;
+    --card-border-color: #e2e8f0;
+    --hover-bg-color: #edf2f7;
+    --scrollbar-thumb-color: #cbd5e0;
+    --icon-color: #4a5568;
+}
+
+html[data-theme='dark'] {
+    --bg-color: #121212;
+    --text-color: #e2e8f0;
+    --text-color-secondary: #a0aec0;
+    --primary-color: #63b3ed;
+    --header-bg-color: #1d1d1d;
+    --card-bg-color: #1d1d1d;
+    --card-border-color: #2d3748;
+    --hover-bg-color: #2d3748;
+    --scrollbar-thumb-color: #4a5568;
+    --icon-color: #a0aec0;
+}
+
+/* --- Thiết lập cơ bản --- */
 body {
     font-family: 'Poppins', sans-serif;
-    background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop'); /* Thêm hình nền tối */
-    background-color: #111; /* Màu nền dự phòng */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    color: #ffffff;
     font-size: 1rem;
-    position: relative;
-    /* overflow-x: hidden; đã được xử lý bởi layout-wrapper */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* --- Bố cục hai cột --- */
 .layout-wrapper {
     display: flex;
-    align-items: stretch; /* Kéo dài các cột bằng nhau */
+    align-items: stretch;
     min-height: 100vh;
 }
 
 .main-content-area {
-    flex: 1; /* Chiếm không gian còn lại */
+    flex: 1;
     height: 100vh;
-    overflow-y: auto; /* Cho phép cột này cuộn */
-    padding: 2rem; /* Thêm khoảng đệm */
-    backdrop-filter: blur(5px); /* Di chuyển hiệu ứng mờ vào đây */
+    overflow-y: auto;
+    padding: 2rem;
 }
 
-/* Tùy chỉnh thanh cuộn cho đẹp hơn (cho trình duyệt WebKit) */
+/* Tùy chỉnh thanh cuộn */
 .main-content-area::-webkit-scrollbar {
     width: 8px;
 }
 
 .main-content-area::-webkit-scrollbar-track {
-    background: transparent;
+    background-color: transparent;
 }
 
 .main-content-area::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: var(--scrollbar-thumb-color);
     border-radius: 4px;
-    border: 2px solid transparent;
-}
-
-/* Thêm đoạn CSS này vào file CSS chính của bạn, ví dụ: style.css */
-
-/* Container cho các cánh hoa anh đào */
-.sakura-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none; /* Cho phép các cú nhấp chuột đi qua */
-    overflow: hidden; /* Ẩn các cánh hoa bên ngoài container */
-    z-index: 9999; /* Đảm bảo nó nằm trên cùng của các nội dung khác */
-}
-
-/* Kiểu dáng cho từng cánh hoa anh đào */
-.sakura {
-    position: absolute;
-    /* Các thuộc tính top, left, width, height, opacity, transform (xoay ban đầu) được đặt bởi JS */
-
-    /* Hình dáng cánh hoa mặc định - có thể thay thế bằng hình ảnh */
-    background-color: #ffffff; /* Màu hồng nhạt */
-    border-radius: 50%; /* Cánh hoa hình tròn đơn giản */
-    /* Để có hình dáng cánh hoa chân thật hơn, hãy sử dụng background-image */
-    /* background-image: url('icons/sakura.png');
-    background-size: 20px;
-    background-repeat: repeat;
-    filter: blur(1px); /* Tùy chọn: làm mờ nhẹ để tạo hiệu ứng chiều sâu */
-
-    /* Thuộc tính animation */
-    animation-name: sakura-fall;
-    animation-timing-function: ease-in-out; /* Để có chuyển động lắc lư tự nhiên hơn */
-    animation-iteration-count: 1; /* Mỗi cánh hoa rơi một lần */
-    animation-fill-mode: forwards; /* Giữ trạng thái cuối cùng (ngoài màn hình) */
-    /* animation-duration và animation-delay được đặt bởi JavaScript */
-}
-
-/* Keyframes cho animation rơi cánh hoa anh đào chân thật */
-@keyframes sakura-fall {
-    0% {
-        /* Bắt đầu từ vị trí, xoay và độ mờ ban đầu được đặt bởi JS */
-        /* Keyframe 0% này đảm bảo animation bắt đầu từ trạng thái hiện tại của phần tử */
-    }
-    25% {
-        /* Lắc lư ngang, rơi dọc và xoay */
-        transform: translate(calc(var(--sway-amplitude) * 0.5), 25vh) rotate(calc(var(--rotation-speed) * 90deg));
-        opacity: 0.4; /* Độ mờ ở 25% của quá trình rơi */
-    }
-    50% {
-        transform: translate(calc(var(--sway-amplitude) * -0.5), 50vh) rotate(calc(var(--rotation-speed) * 180deg));
-        opacity: 0.6; /* Độ mờ tối đa ở giữa quá trình rơi */
-    }
-    75% {
-        transform: translate(calc(var(--sway-amplitude) * 0.5), 75vh) rotate(calc(var(--rotation-speed) * 270deg));
-        opacity: 0.4;
-    }
-    100% {
-        /* Rơi ra khỏi màn hình, xoay và mờ dần */
-        transform: translate(0, 110vh) rotate(calc(var(--rotation-speed) * 360deg));
-        opacity: 0; /* Mờ dần khi nó rời khỏi màn hình */
-    }
 }
 
 .container {
-    max-width: 960px; /* Điều chỉnh lại chiều rộng tối đa cho nội dung chính */
-    margin: 0 auto; /* Căn giữa container trong main-content-area */
-    position: relative;
-    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
+/* --- Header (Cột trái) --- */
 .header {
-    /* --- Cập nhật cho cột bên trái --- */
-    flex: 0 0 350px; /* Chiều rộng cố định 350px */
+    flex: 0 0 350px;
     height: 100vh;
-    position: sticky; /* Giữ cố định khi cuộn */
+    position: sticky;
     top: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Căn nội dung từ trên xuống */
+    justify-content: flex-start;
     padding: 2rem;
     box-sizing: border-box;
-    border-radius: 12px; /* Thêm bo tròn góc */
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    border-right: 1px solid rgba(255, 255, 255, 0.2); /* Đường kẻ phân cách tinh tế hơn */
-    position: relative;
-    overflow: hidden;
+    background-color: var(--header-bg-color);
+    border-right: 1px solid var(--card-border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .header-content-wrapper {
     width: 100%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .header-profile {
     display: flex;
-    flex-direction: column; /* Xếp avatar và tên theo chiều dọc */
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
 }
 
 .avatar {
-    width: 120px; /* Tăng kích thước avatar */
+    width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: 3px solid var(--primary-color);
     object-fit: cover;
 }
 
 .header h1 {
     font-size: 2.2rem;
     margin: 0;
-    position: relative;
-    z-index: 1;
+    color: var(--text-color);
 }
 
 .bio {
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.85), rgba(50, 50, 50, 0.85));
-    /* Các thuộc tính này đã có, chỉ cần điều chỉnh margin */
-    margin-top: 2rem;
-    margin-bottom: 0; /* Bỏ margin bottom */
-    padding: 1rem; /* Giảm padding một chút */
-}
-
-.bio h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-color-secondary);
 }
 
 .social-links {
-    margin-top: 2rem;
     text-align: center;
 }
 
-.social-links > div {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
 .social-box {
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(50, 50, 50, 0.7));
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 12px;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 8px;
     padding: 0.75rem 1rem;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .social-box:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    background-color: var(--hover-bg-color);
+    transform: translateY(-2px);
 }
 
 .social-box a {
-    color: #ffffff;
+    color: var(--text-color);
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 1rem;
+    font-weight: 600;
 }
 
 .social-box a i {
     font-size: 1.4rem;
+    color: var(--primary-color);
 }
 
-.social-box a:hover {
-    color: #d1d5db;
-}
-
+/* --- Các Section chính --- */
 .jailbreak-tools, .package-managers, .ipa-sign-tools {
-    margin-top: 2rem;
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.85), rgba(50, 50, 50, 0.85));
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
     border-radius: 12px;
     padding: 1.5rem;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    position: relative;
-    overflow: hidden;
+    margin-bottom: 2rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .jailbreak-tools h2, .package-managers h2, .ipa-sign-tools h2 {
     font-size: 1.8rem;
     text-align: center;
     margin-bottom: 1.5rem;
+    margin-top: 0;
 }
 
 .tool-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
 .tool-item {
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(50, 50, 50, 0.7));
+    background-color: var(--bg-color);
     padding: 1rem;
-    border-radius: 12px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--card-border-color);
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .tool-item:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    border-color: var(--primary-color);
 }
 
 .tool-header {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .tool-icon {
     width: 32px;
     height: 32px;
+    border-radius: 6px;
 }
 
 .tool-item strong {
@@ -277,12 +207,12 @@ body {
 }
 
 .tool-item a {
-    color: #ffffff;
+    color: var(--text-color);
     text-decoration: none;
 }
 
 .tool-item a:hover {
-    color: #d1d5db;
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
@@ -290,143 +220,77 @@ body {
     margin: 0.5rem 0 0;
     font-size: 0.95rem;
     line-height: 1.5;
+    color: var(--text-color-secondary);
 }
 
+/* --- Footer --- */
 footer {
-    /* Đơn giản hóa footer */
-    background: transparent;
-    padding: 1.5rem 0 0 0; /* Chỉ cần padding top */
-    border-radius: 0;
-    backdrop-filter: none;
-    border: none;
-    box-shadow: none;
-    position: relative;
-    overflow: hidden;
     margin-top: 2rem;
+    padding-top: 1.5rem;
 }
 
 footer p {
     margin: 0;
     text-align: center;
     font-size: 0.9rem;
+    color: var(--text-color-secondary);
 }
 
-.animate-sparkle {
-    animation: fadeIn 1s ease-in;
+/* --- Theme Switcher --- */
+.theme-switcher-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
 }
 
-.animate-sparkle-slow {
-    animation: fadeIn 1.5s ease-in;
-}
-
-.animate-bounce-in {
-    animation: bounceIn 1s ease-out;
-}
-
-.sparkle-text::after {
-    content: '';
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    width: 10px;
-    height: 10px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 20%, transparent 70%);
+.theme-switcher {
+    background-color: var(--hover-bg-color);
+    color: var(--icon-color);
+    border: 1px solid var(--card-border-color);
     border-radius: 50%;
-    animation: sparkle 2s infinite;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
 }
 
-.star-twinkle {
-    position: relative;
+.theme-switcher:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
 }
 
-.star-twinkle::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    width: 6px;
-    height: 6px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 20%, transparent 70%);
-    border-radius: 50%;
-    animation: twinkle 1s infinite;
-}
+/* --- Helper Classes --- */
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-4 { gap: 1rem; }
 
-.star-twinkle::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    right: -5px;
-    width: 6px;
-    height: 6px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 20%, transparent 70%);
-    border-radius: 50%;
-    animation: twinkle 1.2s infinite;
-}
-
-.social-box.heart-pop::after, .tool-item.heart-pop::after {
-    content: '♥';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #ffffff;
-    font-size: 16px;
-    animation: heartPop 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes bounceIn {
-    0% { transform: scale(0.8); opacity: 0; }
-    50% { transform: scale(1.05); opacity: 0.7; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes sparkle {
-    0% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(1.5); opacity: 0.3; }
-    100% { transform: scale(1); opacity: 0.8; }
-}
-
-@keyframes twinkle {
-    0% { transform: scale(1); opacity: 0.9; }
-    50% { transform: scale(1.3); opacity: 0.4; }
-    100% { transform: scale(1); opacity: 0.9; }
-}
-
-@keyframes heartPop {
-    0% { transform: translateX(-50%) translateY(0); opacity: 1; }
-    100% { transform: translateX(-50%) translateY(-20px); opacity: 0; }
-}
-
-/* --- Responsive cho bố cục mới --- */
+/* --- Responsive --- */
 @media (max-width: 1024px) {
     .layout-wrapper {
-        flex-direction: column; /* Chuyển về một cột trên màn hình nhỏ */
+        flex-direction: column;
     }
 
     .header {
         flex-basis: auto;
         height: auto;
-        position: static; /* Bỏ cố định */
-        border-radius: 12px;
+        position: static;
         margin: 1rem;
-        border: 1px solid rgba(255, 255, 255, 0.4); /* Trả lại viền */
-        padding: 1.5rem;
-        border-right: 1px solid rgba(255, 255, 255, 0.4); /* Giữ lại viền phải */
+        border-radius: 12px;
+        border: 1px solid var(--card-border-color);
+        border-right: 1px solid var(--card-border-color);
     }
 
     .main-content-area {
         height: auto;
-        padding: 0 1rem 1rem 1rem; /* Điều chỉnh padding */
-        backdrop-filter: none; /* Tắt blur trên mobile để tăng hiệu năng */
+        padding: 0 1rem 1rem 1rem;
     }
 
     .header-profile {
-        flex-direction: row; /* Quay lại hàng ngang cho gọn */
+        flex-direction: row;
         justify-content: center;
     }
 
@@ -434,34 +298,36 @@ footer p {
         width: 80px;
         height: 80px;
     }
+
+    .theme-switcher-wrapper {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        margin-bottom: 0;
+    }
 }
 
 @media (max-width: 768px) {
     body {
         font-size: 0.95rem;
     }
-
-    .container {
-        padding: 0; /* Bỏ padding của container vì main-content-area đã có */
-    }
-
+    
     .header h1 { font-size: 1.8rem; }
     .bio h2, .jailbreak-tools h2, .package-managers h2, .ipa-sign-tools h2 { font-size: 1.5rem; }
 
     .social-box {
-        flex: 0 0 calc(50% - 0.5rem);
+        flex-grow: 1;
     }
 
-    .tool-list { grid-template-columns: 1fr; }
+    .tool-list { 
+        grid-template-columns: 1fr; 
+    }
+
     .tool-item strong { font-size: 1.1rem; }
     .tool-item p { font-size: 0.9rem; }
 }
 
 @media (max-width: 480px) {
-    .social-box {
-        flex: 0 0 100%;
-    }
-
     .header, .main-content-area {
         margin: 0.5rem;
         padding: 1rem;
@@ -471,7 +337,7 @@ footer p {
         padding-top: 0;
     }
     
-    .bio, .jailbreak-tools, .package-managers, .ipa-sign-tools, footer {
+    .jailbreak-tools, .package-managers, .ipa-sign-tools {
         padding: 1rem;
     }
 }
