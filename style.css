@@ -424,62 +424,24 @@ footer p {
     }
 }
 /* Dán đoạn code mới này vào cuối file style.css */
-
 .section-description {
     text-align: center;
     margin-bottom: 1.5rem;
     color: var(--text-color-secondary);
 }
 
-/* 1. Thiết lập position cho thẻ cha .tool-item */
-.tool-item {
-    /* Các thuộc tính cũ giữ nguyên... */
-    background-color: var(--bg-color);
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--card-border-color);
-    transition: transform 0.2s ease, border-color 0.2s ease, z-index 0s 0.3s;
-    
-    /* THÊM 2 DÒNG NÀY */
-    position: relative; /* Để làm gốc cho .tool-details */
-    z-index: 1;         /* Thiết lập z-index mặc định */
-}
-
-/* 2. Đảm bảo item được hover hoặc mở rộng sẽ nằm lên trên */
-.tool-item:hover, .tool-item.expanded {
-    z-index: 2; /* Nằm lên trên các item khác */
-    border-color: var(--primary-color);
-    transition: transform 0.2s ease, border-color 0.2s ease, z-index 0s;
-}
-
-.tool-item:hover {
-    transform: scale(1.05);
-}
-
-/* 3. Định nghĩa lại .tool-details để nó "nổi" lên */
+/* --- Accordion Details (Push-down effect) --- */
 .tool-details {
-    position: absolute;
-    top: 100%; /* Nằm ngay dưới thẻ cha */
-    left: 0;
-    right: 0;
-    background-color: var(--card-bg-color); /* Nền cho nội dung bung ra */
-    border: 1px solid var(--card-border-color);
-    border-top: none; /* Bỏ border trên để không bị double */
-    padding: 1rem;
-    border-radius: 0 0 8px 8px; /* Bo góc dưới */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-
-    /* Hiệu ứng ẩn/hiện mượt mà */
-    opacity: 0;
-    transform: translateY(-10px);
-    visibility: hidden;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, margin-top 0.3s ease-out, padding-top 0.3s ease-out;
+    padding-top: 0;
+    margin-top: 0;
 }
 
-/* 4. Trạng thái khi .tool-item được mở rộng */
 .tool-item.expanded .tool-details {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s;
+    max-height: 500px; /* Giá trị đủ lớn để hiển thị nội dung */
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--card-border-color);
 }
