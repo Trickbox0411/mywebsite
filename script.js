@@ -43,4 +43,75 @@ document.addEventListener('DOMContentLoaded', () => {
             setTheme(newTheme);
         });
     }
+
+    // --- Collapse/Expand Logic for Tool Sections ---
+    // Function to apply collapse/expand logic to a given section
+    function applyCollapseExpand(sectionSelector) {
+        const toolItems = document.querySelectorAll(sectionSelector + ' .tool-item');
+
+        toolItems.forEach(item => {
+            const header = item.querySelector('.tool-header');
+            const toggleButton = item.querySelector('.toggle-details');
+            const toolDetails = item.querySelector('.tool-details');
+
+            // Ensure all necessary elements exist before adding event listeners
+            if (header && toggleButton && toolDetails) {
+                header.addEventListener('click', (event) => {
+                    // Prevent toggling if the click originated from the link inside the header
+                    if (event.target.closest('a')) {
+                        return;
+                    }
+
+                    // Đóng tất cả các mục khác trong cùng một phần
+                    toolItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('expanded');
+                            const otherToggleButton = otherItem.querySelector('.toggle-details');
+                            if (otherToggleButton) otherToggleButton.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    // Chuyển đổi (toggle) trạng thái của mục được nhấp
+                    // Nếu nó đang mở, nó sẽ đóng lại. Nếu nó đang đóng, nó sẽ mở ra.
+                    const isExpanded = item.classList.toggle('expanded');
+                    toggleButton.setAttribute('aria-expanded', isExpanded);
+                });
+            };
+        });
+    }   
+
+    
+
+    // Apply collapse/expand logic to relevant sections
+    applyCollapseExpand('#jailbreak-tools');
+    applyCollapseExpand('#ipa-sign-tools'); // For index.html
+    applyCollapseExpand('#trollstore-ipa'); // For ipa.html
+    applyCollapseExpand('#ipa-tools'); // For ipa.html
+    applyCollapseExpand('#jailbreak-tools'); // For index.html
+    applyCollapseExpand('#ipa-sign-tools'); // For index.html
+    applyCollapseExpand('#trollstore-compatible-ipas'); // For ipa.html
+    applyCollapseExpand('#general-ipas'); // For ipa.html
+
+
+
+    // --- Scroll to Top Button ---
+    const scrollToTopButton = document.getElementById('scroll-to-top');
+    const mainContentArea = document.querySelector('.main-content-area');
+
+    if (scrollToTopButton && mainContentArea) {
+        // Show/hide button on scroll
+        mainContentArea.addEventListener('scroll', () => {
+            // Show button after scrolling 300px
+            if (mainContentArea.scrollTop > 300) {
+                scrollToTopButton.classList.add('show');
+            } else {
+                scrollToTopButton.classList.remove('show');
+            }
+        });
+
+        // Scroll to top on click
+        scrollToTopButton.addEventListener('click', () => {
+            mainContentArea.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });

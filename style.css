@@ -194,6 +194,7 @@ body {
     align-items: center;
     gap: 1rem;
     margin-bottom: 0.75rem;
+    cursor: pointer; /* Make the whole header clickable */
 }
 
 .tool-icon {
@@ -204,11 +205,14 @@ body {
 
 .tool-item strong {
     font-size: 1.2rem;
+    flex-grow: 1; /* Allow the strong tag to take available space */
 }
 
 .tool-item a {
     color: var(--text-color);
     text-decoration: none;
+    /* Ensure link itself doesn't trigger toggle */
+    pointer-events: auto;
 }
 
 .tool-item a:hover {
@@ -216,11 +220,31 @@ body {
     text-decoration: underline;
 }
 
-.tool-item p {
-    margin: 0.5rem 0 0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--text-color-secondary);
+.tool-item.expanded .toggle-details i {
+    transform: rotate(180deg);
+}
+
+/*.tool-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+}*/
+
+/* .tool-item.expanded .tool-details {
+    max-height: 500px; 
+    opacity: 1;
+    margin-top: 0.5rem; 
+}*/
+
+/* Adjust tool-item p margin for better spacing when collapsed */
+/* These p tags are now inside .tool-details */
+.tool-details p {
+    margin: 0.25rem 0; /* Smaller margin for paragraphs inside details */
+}
+
+.tool-details p:first-child {
+    margin-top: 0; /* No top margin for the first paragraph in details */
 }
 
 /* --- Footer --- */
@@ -261,6 +285,56 @@ footer p {
 .theme-switcher:hover {
     color: var(--primary-color);
     border-color: var(--primary-color);
+}
+
+/* --- Scroll to Top Button --- */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-3px);
+    /* background-color: var(--primary-color); */ /* Keep same color or slightly darker */
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* New styles for toggle button (moved from commented out section) */
+.toggle-details {
+    background: none;
+    border: none;
+    color: var(--icon-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
 }
 
 /* --- Helper Classes --- */
@@ -305,6 +379,14 @@ footer p {
         right: 1rem;
         margin-bottom: 0;
     }
+
+    .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        bottom: 15px;
+        right: 15px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -340,4 +422,64 @@ footer p {
     .jailbreak-tools, .package-managers, .ipa-sign-tools {
         padding: 1rem;
     }
+}
+/* Dán đoạn code mới này vào cuối file style.css */
+
+.section-description {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-color-secondary);
+}
+
+/* 1. Thiết lập position cho thẻ cha .tool-item */
+.tool-item {
+    /* Các thuộc tính cũ giữ nguyên... */
+    background-color: var(--bg-color);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--card-border-color);
+    transition: transform 0.2s ease, border-color 0.2s ease, z-index 0s 0.3s;
+    
+    /* THÊM 2 DÒNG NÀY */
+    position: relative; /* Để làm gốc cho .tool-details */
+    z-index: 1;         /* Thiết lập z-index mặc định */
+}
+
+/* 2. Đảm bảo item được hover hoặc mở rộng sẽ nằm lên trên */
+.tool-item:hover, .tool-item.expanded {
+    z-index: 2; /* Nằm lên trên các item khác */
+    border-color: var(--primary-color);
+    transition: transform 0.2s ease, border-color 0.2s ease, z-index 0s;
+}
+
+.tool-item:hover {
+    transform: scale(1.05);
+}
+
+/* 3. Định nghĩa lại .tool-details để nó "nổi" lên */
+.tool-details {
+    position: absolute;
+    top: 100%; /* Nằm ngay dưới thẻ cha */
+    left: 0;
+    right: 0;
+    background-color: var(--card-bg-color); /* Nền cho nội dung bung ra */
+    border: 1px solid var(--card-border-color);
+    border-top: none; /* Bỏ border trên để không bị double */
+    padding: 1rem;
+    border-radius: 0 0 8px 8px; /* Bo góc dưới */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+
+    /* Hiệu ứng ẩn/hiện mượt mà */
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+}
+
+/* 4. Trạng thái khi .tool-item được mở rộng */
+.tool-item.expanded .tool-details {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s;
 }
