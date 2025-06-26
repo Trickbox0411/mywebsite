@@ -80,17 +80,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }   
 
-    
-
     // Apply collapse/expand logic to relevant sections
-    applyCollapseExpand('#jailbreak-tools');
-    applyCollapseExpand('#ipa-sign-tools'); // For index.html
-    applyCollapseExpand('#trollstore-ipa'); // For ipa.html
-    applyCollapseExpand('#ipa-tools'); // For ipa.html
-    applyCollapseExpand('#jailbreak-tools'); // For index.html
-    applyCollapseExpand('#ipa-sign-tools'); // For index.html
-    applyCollapseExpand('#trollstore-compatible-ipas'); // For ipa.html
-    applyCollapseExpand('#general-ipas'); // For ipa.html
+    // Check if the element exists before applying to avoid errors on pages where it's not present
+    if (document.querySelector('#jailbreak-tools')) {
+        applyCollapseExpand('#jailbreak-tools');
+    }
+    if (document.querySelector('#ipa-sign-tools')) {
+        applyCollapseExpand('#ipa-sign-tools');
+    }
+    if (document.querySelector('#trollstore-compatible-ipas')) {
+        applyCollapseExpand('#trollstore-compatible-ipas');
+    }
+    if (document.querySelector('#general-ipas')) {
+        applyCollapseExpand('#general-ipas');
+    }
 
 
 

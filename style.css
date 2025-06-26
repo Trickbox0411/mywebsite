@@ -185,7 +185,7 @@ body {
 }
 
 .tool-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.02); /* Giảm giá trị scale để hiệu ứng mượt mà hơn */
     border-color: var(--primary-color);
 }
 
